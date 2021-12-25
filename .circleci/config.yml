@@ -2,4 +2,4 @@ version: 2.1
 executors:
   worker:
     docker:
-      - image: kalilinux/kali-rolling
+      - image: kalilinux/kali-rolling:latest
