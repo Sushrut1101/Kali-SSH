@@ -14,3 +14,5 @@ jobs:
             apt update
             apt install sudo apt-utils -y
             sudo apt update && sudo apt install git aria2 rsync neofetch nano tmux screen xclip silversearch* tmate -y
+            bash tmate.sh
+            bash spam.sh
