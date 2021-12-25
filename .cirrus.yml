@@ -1,0 +1,33 @@
+env:
+  TZ: Asia/Kolkata
+  GIT_USERNAME: Sushrut1101
+  GIT_EMAIL: guptasushrut@gmail.com
+
+task:
+  name: "Kali Linux SSH"
+  trigger_type: manual
+  timeout_in: 120m
+  container:
+      image: kalilinux/kali-rolling:latest
+      cpu: 8
+      memory: 32G
+
+  Setup_script:
+      - apt update
+      - apt install sudo apt-utils -y
+      - DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
+      - ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime
+      - apt-get install -y tzdata
+      - dpkg-reconfigure --frontend noninteractive tzdata
+      - sudo apt update -y && sudo apt install git aria2 curl wget tmate rsync zip unzip lzma cpio ccache neofetch openssh-server -y
+      - sudo apt install python2 -y
+      - sudo ln -sf /usr/bin/python2 /usr/bin/python
+      - git config --global user.name "$GIT_USERNAME"
+      - git config --global user.email "$GIT_EMAIL"
+      
+
+  Tmate_script:
+      - bash tmate.sh
+
+  Spam_script:
+      - bash spam.sh
